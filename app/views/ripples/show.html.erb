@@ -2,7 +2,12 @@
 
 <p>
   <strong>
-  <%= @ripple.name %> said:
+    <% if @ripple.url.empty? %>
+        <td><%= @ripple.name %></td>
+    <% else %>
+        <td><%= link_to @ripple.name, sitelink(@ripple.url), :target => "_blank" %></td>
+    <% end %>
+    said:
   </strong>
 </p>
 
