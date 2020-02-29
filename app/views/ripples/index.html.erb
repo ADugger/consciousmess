@@ -1,7 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Ripples</h1>
-
 <table>
   <thead>
     <tr>
@@ -13,7 +11,7 @@
   </thead>
 
   <tbody>
-    <% @ripples.each do |ripple| %>
+    <% @ripples.order(created_at: :desc).limit(10).each do |ripple| %>
       <tr>
         <td><%= ripple.name %></td>
         <td><%= ripple.message.truncate(50, omission: '...') %></td>

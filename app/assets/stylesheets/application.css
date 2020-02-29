@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+ 
+ h1 {
+   background: #2061F9;
+   color: white;
+   height: 3em;
+   font-size: 24pt;
+   line-height: 1em;
+   padding: 1em 1em 1em 1em;
+ }
