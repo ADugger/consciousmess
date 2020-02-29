@@ -11,10 +11,8 @@
   </strong>
 </p>
 
-<p class="message">
-  <strong>
-  <%= @ripple.message %>
-  </strong>
+<p>
+  <%= simple_format(@ripple.message, class: 'message') %>
 </p>
 
 <%= link_to 'Back', ripples_path %>
