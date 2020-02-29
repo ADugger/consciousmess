@@ -16,11 +16,9 @@
     <% @ripples.each do |ripple| %>
       <tr>
         <td><%= ripple.name %></td>
-        <td><%= ripple.url %></td>
-        <td><%= ripple.message %></td>
-        <td><%= link_to 'Show', ripple %></td>
-        <td><%= link_to 'Edit', edit_ripple_path(ripple) %></td>
-        <td><%= link_to 'Destroy', ripple, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= ripple.message.truncate(50, omission: '...') %></td>
+        <td><%= ripple.created_at %></td>
+        <td><%= link_to 'Show', ripple %></td>        
       </tr>
     <% end %>
   </tbody>
