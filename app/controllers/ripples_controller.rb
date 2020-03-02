@@ -1,10 +1,13 @@
 class RipplesController < ApplicationController
   before_action :set_ripple, only: [:show]
+  RIPPLES_PER_PAGE = 10
 
   # GET /ripples
   # GET /ripples.json
   def index
-    @ripples = Ripple.all
+    @page = params.fetch(:page, 0).to_i
+    @ripples = Ripple.order(created_at: :desc).offset(RIPPLES_PER_PAGE * @page).limit(RIPPLES_PER_PAGE)
+    @total_pages = (Ripple.all.count/RIPPLES_PER_PAGE.to_f).ceil
   end
 
   # GET /ripples/1
@@ -66,7 +69,7 @@ class RipplesController < ApplicationController
     def set_ripple
       @ripple = Ripple.find(params[:id])
     end
-
+     
     # Only allow a list of trusted parameters through.
     def ripple_params
       params.require(:ripple).permit(:name, :url, :message)

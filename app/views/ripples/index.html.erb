@@ -27,5 +27,18 @@
 </table>
 
 <br>
-
-<%= link_to 'New Ripple', new_ripple_path %>
+<div>
+  <% if @page <= 0 %>
+    First 10 Ripples | Previous 10 Ripples |
+  <% else %>
+    <%= link_to 'First 10 Ripples', ripples_path %> |
+    <%= link_to 'Previous 10 Ripples', ripples_path(page: @page - 1) %> |
+  <% end %>
+  <% if @page >= @total_pages - 1 %>
+    Next 10 Ripples | Last 10 Ripples |
+  <% else %>
+    <%= link_to 'Next 10 Ripples', ripples_path(page: @page + 1) %> |
+    <%= link_to 'Last 10 Ripples', ripples_path(page: @total_pages - 1) %> |
+  <% end %>
+  <%= link_to 'New Ripple', new_ripple_path %>
+<div>
